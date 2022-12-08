@@ -1,0 +1,6 @@
+@import "../../styles/mixins";
+
+.events {
+    @include card;
+    grid-area: events;
+}

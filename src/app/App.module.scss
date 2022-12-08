@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Kenia&family=La+Belle+Aurore&family=Lobster&family=Roboto:wght@400;700&family=Zen+Dots&display=swap');
+
+.app {
+    min-height: 100vh;
+    background-color: var(--color-bg-seondary);
+
+    display: grid;
+    grid-template-areas:
+        "heading heading"
+        "calendar events";
+    grid-template-columns: 7fr 3fr;
+    grid-template-rows: 1.5fr 9.5fr;
+    gap: 1em;
+
+    padding: 1em 10em 5em 10em;
+
+    &__heading {
+        font-size: 3em;
+        font-family: 'La Belle Aurore';
+        grid-area: heading;
+        justify-self: center;
+        align-self: center;
+    }
+}

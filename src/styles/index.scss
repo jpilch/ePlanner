@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-light-primary: #222;
+    --color-light-secondary: #444;
+
+    --color-bg-primary: #fff;
+    --color-bg-seondary: rgb(253, 253, 253);
+
+    --border-light: 1px solid #ddd;
+}
+
+body {
+    font-family: 'Roboto', 'Courier New', Courier, monospace;
+    color: var(--color-light-primary);
+}

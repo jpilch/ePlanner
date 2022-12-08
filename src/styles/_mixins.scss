@@ -1,0 +1,23 @@
+@mixin fill {
+    height: 100%;
+    width: 100%;
+}
+
+@mixin flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+@mixin card {
+    background-color: rgba($color: #fff, $alpha: 1);
+    border-radius: 0.5em;
+    border: var(--border-light);
+    padding: 1em;
+}

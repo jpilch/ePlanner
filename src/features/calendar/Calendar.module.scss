@@ -1,0 +1,17 @@
+@import "../../styles/mixins";
+
+.calendar {
+    @include card;
+    @include flex-container;
+    @include flex-column;
+    grid-area: calendar;
+}
+
+.navigation {
+    @include flex-container;
+    flex: 1;
+}
+
+.grid {
+    flex: 9;
+}
