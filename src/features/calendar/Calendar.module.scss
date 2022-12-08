@@ -10,6 +10,22 @@
 .navigation {
     @include flex-container;
     flex: 1;
+    gap: 1em;
+
+    &__month {
+        font-weight: bold;
+    }
+
+    &__icon {
+        @include flex-container;
+        color: #fff;
+        background-color: var(--color-bg-dark);
+        border-radius: 0.2em;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }
 
 .grid {
