@@ -15,9 +15,16 @@
     align-items: stretch;
 }
 
-@mixin card {
+@mixin container-card {
     background-color: rgba($color: #fff, $alpha: 1);
-    border-radius: 0.5em;
+    border-radius: 0.3em;
     border: var(--border-light);
-    padding: 1em;
+    padding: 0.5em 1em;
+}
+
+@mixin item-card {
+    background-color: rgba($color: #fff, $alpha: 1);
+    border-radius: 0.3em;
+    border: var(--border-light);
+    padding: 0.5em;
 }

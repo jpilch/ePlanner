@@ -3,7 +3,6 @@ import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 
 import styles from "./Calendar.module.scss";
 
-
 export default function CalendarNavigation() {
     return (
         <div className={styles.navigation}>
