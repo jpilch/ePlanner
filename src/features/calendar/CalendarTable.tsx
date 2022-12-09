@@ -20,8 +20,15 @@ CalendarTable.Head = React.memo(() => (
 CalendarTable.DaysRow = React.memo(({ days }: { days: Array<Day> }) => (
     <tr>
         {days.map(day => (
-            <td className={styles.table__cell} key={day.id}>
-                {day?.number ?? ""}
+            <td
+                className={styles.table__cell}
+                key={day.id}
+                onClick={e => e.target.classList.toggle(styles["table__cell--selected"])}
+            >
+                <p className={styles.table__day}>
+                    {day?.number ?? ""}
+                </p>
+
             </td>
         ))}
     </tr>
@@ -34,6 +41,7 @@ CalendarTable.Body = () => {
         <tbody>
             <CalendarTable.DaysRow days={days.slice(0, 7)} />
             <CalendarTable.DaysRow days={days.slice(7, 14)} />
+            <CalendarTable.DaysRow days={days.slice(14, 21)} />
             <CalendarTable.DaysRow days={days.slice(21, 28)} />
             <CalendarTable.DaysRow days={days.slice(28, 35)} />
         </tbody>

@@ -14,16 +14,7 @@
         border-right: var(--border-light);
         background-color: var(--color-bg-seondary);
         font-size: 1.5em;
-        padding: 0.5em 2em;
-    }
-
-    &__table {
-        border-collapse: collapse;
-        border: var(--border-light)
-    }
-
-    &__cell {
-        border: var(--border-light);
+        padding: 0.5em;
     }
 }
 
@@ -34,7 +25,7 @@
 
     &__heading,
     &__cell {
-        text-align: center;
+        text-align: left;
         border: var(--border-light);
     }
 
@@ -43,6 +34,23 @@
     }
 
     &__cell {
-        padding: 1em;
+        position: relative;
+        height: 3em;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &--selected {
+            background-color: var(--color-highlight-primary);
+            color: #fff;
+        }
+    }
+
+    &__day {
+        position: absolute;
+        top: 0.2em;
+        right: 0.2em;
+        font-size: 0.9em;
     }
 }

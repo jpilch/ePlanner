@@ -6,13 +6,13 @@
 
     display: grid;
     grid-template-areas:
-        "heading heading"
-        "calendar events";
-    grid-template-columns: 7fr 3fr;
-    grid-template-rows: 1.5fr 8.5fr;
+        "heading"
+        "calendar"
+        "events";
+    grid-template-rows: .5fr 4.5fr 5fr;
     gap: 1em;
 
-    padding: 10em 30em;
+    padding: 5em 30em;
 
     &__heading {
         font-size: 2em;
