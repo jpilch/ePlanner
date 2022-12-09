@@ -19,6 +19,7 @@ const initialState: CalendarState = {
         verbose: format(today, "MMMM"),
     },
     year: format(today, "yyyy"),
+    shorthand: format(today, "dd/MM/yyyy"),
 };
 
 export const CalendarContext = createContext<CalendarState | null>(null);

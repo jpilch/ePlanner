@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import cn from "classnames";
 
 import styles from "./Calendar.module.scss";
 import { DAYS_OF_THE_WEEK } from "./constants";
-import { Day } from "./types";
+import { CalendarState, Day } from "./types";
 import { getMonthDays } from "./utils";
+import { CalendarContext } from "./CalendarProvider";
 
 CalendarTable.Head = React.memo(() => (
     <thead>
@@ -17,22 +19,29 @@ CalendarTable.Head = React.memo(() => (
     </thead>
 ))
 
-CalendarTable.DaysRow = React.memo(({ days }: { days: Array<Day> }) => (
-    <tr>
-        {days.map(day => (
-            <td
-                className={styles.table__cell}
-                key={day.id}
-                onClick={e => e.currentTarget.classList.toggle(styles["table__cell--selected"])}
-            >
-                <p className={styles.table__day}>
-                    {day?.number ?? ""}
-                </p>
+CalendarTable.DaysRow = React.memo(({ days }: { days: Array<Day> }) => {
+    const { dayOfTheMonth } = useContext(CalendarContext) as CalendarState;
 
-            </td>
-        ))}
-    </tr>
-))
+    return (
+        <tr>
+            {days.map(day => (
+                <td
+                    className={cn({
+                        [styles.table__cell]: true,
+                        [styles["table__cell--selected"]]:
+                            day.number === +dayOfTheMonth.numeric
+                    })}
+                    key={day.id}>
+                    <p className={styles.table__day}>
+                        {day?.number ?? ""}
+                    </p>
+
+                </td>
+            ))}
+        </tr>
+    )
+})
+
 
 CalendarTable.Body = () => {
     const days = getMonthDays();

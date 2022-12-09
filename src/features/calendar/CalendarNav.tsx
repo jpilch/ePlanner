@@ -1,7 +1,7 @@
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import { useContext } from 'react';
-import { CalendarContext } from './CalendarContext';
+import { CalendarContext } from './CalendarProvider';
 
 import styles from "./Calendar.module.scss";
 import { CalendarState } from './types';

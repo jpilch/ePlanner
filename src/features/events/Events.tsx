@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 import styles from "./Events.module.scss";
 import { CalendarState } from '../calendar/types';
-import { CalendarContext } from '../calendar/CalendarContext';
+import { CalendarContext } from '../calendar/CalendarProvider';
 import { useContext } from 'react';
 
 Events.List = function ({ empty }: { empty: boolean }) {

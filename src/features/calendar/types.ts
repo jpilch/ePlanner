@@ -19,5 +19,5 @@ export interface CalendarState {
     dayOfTheWeek: StateValueTypes,
     dayOfTheMonth: StateValueTypes,
     month: StateValueTypes,
-    year: string
+    year: string,
 }
