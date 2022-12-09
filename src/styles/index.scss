@@ -6,17 +6,24 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 :root {
     --color-light-primary: #222;
-    --color-light-secondary: #444;
+    --color-light-secondary: #777;
 
     --color-bg-primary: #fff;
-    --color-bg-seondary: rgb(250, 250, 250);
+    // --color-bg-seondary: rgb(250, 250, 250);
+    --color-bg-seondary: #fff;
     --color-bg-dark: #222;
 
     --border-light: 1px solid #ddd;
+
+    --color-highlight-primary: #007bff;
 }
 
 body {

@@ -5,7 +5,9 @@ import Events from "../features/events/Events";
 export default function App() {
     return (
         <main className={styles.app}>
-            <h1 className={styles.app__heading}>eCal</h1>
+            <h1 className={styles.app__heading}>
+                eCalendar
+            </h1>
             <Calendar />
             <Events />
         </main>
