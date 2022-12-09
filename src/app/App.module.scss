@@ -2,20 +2,20 @@
 
 .app {
     min-height: 100vh;
-    background-color: var(--color-bg-seondary);
+    background-color: var(--color-bg-primary);
 
     display: grid;
     grid-template-areas:
         "heading heading"
         "calendar events";
     grid-template-columns: 7fr 3fr;
-    grid-template-rows: 1.5fr 9.5fr;
+    grid-template-rows: 1.5fr 8.5fr;
     gap: 1em;
 
-    padding: 1em 10em 5em 10em;
+    padding: 10em 30em;
 
     &__heading {
-        font-size: 3em;
+        font-size: 2em;
         font-family: 'La Belle Aurore';
         grid-area: heading;
         justify-self: center;

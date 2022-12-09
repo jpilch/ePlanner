@@ -1,6 +1,5 @@
 import styles from "./App.module.scss";
 import Calendar from "../features/calendar/Calendar";
-import Events from "../features/events/Events";
 
 export default function App() {
     return (
@@ -9,7 +8,6 @@ export default function App() {
                 eCalendar
             </h1>
             <Calendar />
-            <Events />
         </main>
     )
 }
