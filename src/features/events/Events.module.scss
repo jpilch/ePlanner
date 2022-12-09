@@ -10,6 +10,7 @@
 
     &__date {
         @include flex-container;
+        font-family: 'Signika Negative';
         font-size: 1.5em;
         padding: 0.5em;
         background-color: var(--color-bg-seondary);
@@ -17,14 +18,13 @@
     }
 }
 
-
 .list {
-
-
     overflow-y: scroll;
     flex: 1;
 
     &__button {
+        font-weight: 1.5em;
+        font-weight: bold;
         padding: 1em;
         border: var(--color-highlight-primary);
         background-color: var(--color-highlight-primary);

@@ -4,17 +4,23 @@
     @include flex-column;
     grid-area: calendar;
     overflow: hidden;
+}
 
-    &__month {
+.nav {
+    @include flex-container;
+    font-family: 'Signika Negative';
+    justify-content: space-between;
+    border-top-left-radius: 0.2em;
+    border-top-right-radius: 0.2em;
+    border-top: var(--border-light);
+    border-left: var(--border-light);
+    border-right: var(--border-light);
+    background-color: var(--color-bg-seondary);
+    font-size: 1.5em;
+    padding: 0.5em;
+
+    &__icon {
         @include flex-container;
-        border-top-left-radius: 0.2em;
-        border-top-right-radius: 0.2em;
-        border-top: var(--border-light);
-        border-left: var(--border-light);
-        border-right: var(--border-light);
-        background-color: var(--color-bg-seondary);
-        font-size: 1.5em;
-        padding: 0.5em;
     }
 }
 

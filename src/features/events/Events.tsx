@@ -14,7 +14,9 @@ Events.List = function ({ empty }: { empty: boolean }) {
                 <p>Nothing here yet!</p>
                 <SearchOffIcon fontSize={"large"} />
             </div>
-            <p className={styles.list__instruction}>Schedule events by using the button blow.</p>
+            <p className={styles.list__instruction}>
+                Schedule events by using the button blow.
+            </p>
         </div>
     )
 }

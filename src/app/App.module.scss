@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kenia&family=La+Belle+Aurore&family=Lobster&family=Roboto:wght@400;700&family=Zen+Dots&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kenia&family=La+Belle+Aurore&family=Lobster&family=Roboto:wght@400;700&family=Signika+Negative&family=Zen+Dots&display=swap');
 
 .app {
     min-height: 100vh;
@@ -10,13 +10,13 @@
         "calendar"
         "events";
     grid-template-rows: .5fr 4.5fr 5fr;
-    gap: 1em;
+    gap: 2em;
 
-    padding: 5em 30em;
+    padding: 2em 30em 5em 30em;
 
     &__heading {
-        font-size: 2em;
-        font-family: 'La Belle Aurore';
+        font-size: 2.5em;
+        font-family: 'Signika Negative';
         grid-area: heading;
         justify-self: center;
         align-self: center;

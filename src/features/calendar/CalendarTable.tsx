@@ -23,7 +23,7 @@ CalendarTable.DaysRow = React.memo(({ days }: { days: Array<Day> }) => (
             <td
                 className={styles.table__cell}
                 key={day.id}
-                onClick={e => e.target.classList.toggle(styles["table__cell--selected"])}
+                onClick={e => e.currentTarget.classList.toggle(styles["table__cell--selected"])}
             >
                 <p className={styles.table__day}>
                     {day?.number ?? ""}

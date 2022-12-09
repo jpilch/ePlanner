@@ -6,7 +6,7 @@ export default function App() {
     return (
         <main className={styles.app}>
             <h1 className={styles.app__heading}>
-                Sneed's Feed and Seed (formerly Chuck's)
+                ePlanner
             </h1>
             <Calendar />
             <Events />
