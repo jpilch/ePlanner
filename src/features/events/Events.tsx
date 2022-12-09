@@ -2,6 +2,9 @@ import SearchOffIcon from '@mui/icons-material/SearchOff';
 import cn from 'classnames';
 
 import styles from "./Events.module.scss";
+import { CalendarState } from '../../context/types';
+import { CalendarContext } from '../../context/CalendarContext';
+import { useContext } from 'react';
 
 Events.List = function ({ empty }: { empty: boolean }) {
 
@@ -22,13 +25,20 @@ Events.List = function ({ empty }: { empty: boolean }) {
 }
 
 export default function Events() {
+    const {
+        dayOfTheWeek,
+        dayOfTheMonth,
+        month
+    } = useContext(CalendarContext) as CalendarState;
+
     return (
         <section className={styles.events}>
             <div className={styles.events__date}>
-                <p>Thursday, December 9th</p>
+                <p>
+                    {dayOfTheWeek.verbose}, {month.verbose} {dayOfTheMonth.verbose}
+                </p>
             </div>
             <Events.List empty={true} />
-
             <button className={styles.list__button}>Add</button>
         </section >
     )

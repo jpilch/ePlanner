@@ -2,10 +2,14 @@ import React, { createContext } from "react"
 import { useImmerReducer } from "use-immer";
 import { format } from "date-fns";
 
-import { Action, State } from "./types";
+import { Action, CalendarState } from "./types";
 
 const today = new Date();
-const initialState: State = {
+const initialState: CalendarState = {
+    dayOfTheWeek: {
+        numeric: format(today, "i"),
+        verbose: format(today, "EEEE"),
+    },
     dayOfTheMonth: {
         numeric: format(today, "d"),
         verbose: format(today, "do"),
@@ -17,8 +21,9 @@ const initialState: State = {
     year: format(today, "yyyy"),
 };
 
-const CalendarContext = createContext<State | null>(null);
-const CalendarDispatchContext = createContext<React.Dispatch<Action> | null>(null);
+export const CalendarContext = createContext<CalendarState | null>(null);
+export const CalendarDispatchContext =
+    createContext<React.Dispatch<Action> | null>(null);
 
 export default function CalendarProvider({ children }: {
     children: JSX.Element[] | JSX.Element
@@ -34,7 +39,7 @@ export default function CalendarProvider({ children }: {
     )
 }
 
-function calendarReducer(state = initialState, action: Action): State {
+function calendarReducer(state = initialState, action: Action): CalendarState {
     switch (action.type) {
         case "NEXT_MONTH":
         case "PREV_MONTH":

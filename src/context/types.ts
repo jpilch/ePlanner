@@ -10,7 +10,8 @@ interface StateValueTypes {
     verbose: string,
 }
 
-export interface State {
+export interface CalendarState {
+    dayOfTheWeek: StateValueTypes,
     dayOfTheMonth: StateValueTypes,
     month: StateValueTypes,
     year: string
