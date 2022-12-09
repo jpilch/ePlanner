@@ -2,8 +2,8 @@ import SearchOffIcon from '@mui/icons-material/SearchOff';
 import cn from 'classnames';
 
 import styles from "./Events.module.scss";
-import { CalendarState } from '../../context/types';
-import { CalendarContext } from '../../context/CalendarContext';
+import { CalendarState } from '../calendar/types';
+import { CalendarContext } from '../calendar/CalendarContext';
 import { useContext } from 'react';
 
 Events.List = function ({ empty }: { empty: boolean }) {
