@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import cn from "classnames";
 
 import styles from "./Calendar.module.scss";
-import { DAYS_OF_THE_WEEK } from "./constants";
-import { CalendarState, Day } from "./types";
-import { getMonthDays } from "./utils";
-import { CalendarContext } from "./CalendarProvider";
+import { DAYS_OF_THE_WEEK } from "../constants";
+import { CalendarState, Day } from "../types";
+import { getMonthDays } from "../utils";
+import { CalendarContext } from "../context/CalendarProvider";
 
 CalendarTable.Head = React.memo(() => (
     <thead>

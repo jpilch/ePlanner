@@ -1,5 +1,5 @@
 import styles from "./App.module.scss";
-import Calendar from "../features/calendar/Calendar";
+import Calendar from "../features/calendar/components/Calendar";
 import Events from "../features/events/Events";
 
 export default function App() {

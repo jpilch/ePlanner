@@ -1,10 +1,10 @@
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import { useContext } from 'react';
-import { CalendarContext } from './CalendarProvider';
+import { CalendarContext } from '../context/CalendarProvider';
 
 import styles from "./Calendar.module.scss";
-import { CalendarState } from './types';
+import { CalendarState } from '../types';
 
 CalendarNav.Icon = function ({ children }: { children: JSX.Element }) {
     return (
