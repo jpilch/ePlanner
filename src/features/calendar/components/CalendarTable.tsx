@@ -75,6 +75,7 @@ CalendarTable.Body = () => {
             <CalendarTable.DaysRow days={days.slice(14, 21)} />
             <CalendarTable.DaysRow days={days.slice(21, 28)} />
             <CalendarTable.DaysRow days={days.slice(28, 35)} />
+            <CalendarTable.DaysRow days={days.slice(35, 42)} />
         </tbody>
     )
 }
