@@ -21,7 +21,7 @@ export enum ActionTypes {
 
 export interface Action {
     type: ActionTypes;
-    payload: string;
+    payload?: string;
 }
 
 interface NumericAndVerbose {

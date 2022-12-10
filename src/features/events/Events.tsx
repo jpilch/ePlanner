@@ -25,13 +25,14 @@ Events.List = function ({ empty }: { empty: boolean }) {
 }
 
 export default function Events() {
-    const { selectedDate, month } = useContext(CalendarContext) as CalendarState;
+    const { selectedDate } = useContext(CalendarContext) as CalendarState;
 
     return (
         <section className={styles.events}>
             <div className={styles.events__date}>
                 <p>
-                    {selectedDate.dayOfTheWeek.verbose}, {month.verbose} {selectedDate.dayOfTheMonth.verbose}
+                    {selectedDate.dayOfTheWeek.verbose},{" "}
+                    {selectedDate.month.verbose} {selectedDate.dayOfTheMonth.verbose}
                 </p>
             </div>
             <Events.List empty={true} />

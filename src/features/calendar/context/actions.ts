@@ -6,3 +6,15 @@ export function selectDate(shorthand: string): Action {
         payload: shorthand,
     }
 }
+
+export function selectNextMonth() {
+    return {
+        type: ActionTypes.NEXT_MONTH,
+    }
+}
+
+export function selectPrevMonth() {
+    return {
+        type: ActionTypes.PREV_MONTH,
+    }
+}
