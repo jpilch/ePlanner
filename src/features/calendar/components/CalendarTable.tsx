@@ -5,7 +5,8 @@ import styles from "./Calendar.module.scss";
 import { DAYS_OF_THE_WEEK } from "../constants";
 import { CalendarState, PlaceholderDay, ValidMonthDay } from "../types";
 import { getMonthDays } from "../utils";
-import { CalendarContext } from "../context/CalendarProvider";
+import { CalendarContext, CalendarDispatchContext } from "../context/CalendarProvider";
+import { selectDate } from "../context/actions";
 
 CalendarTable.Head = React.memo(() => (
     <thead>
@@ -23,28 +24,41 @@ CalendarTable.DaysRow = React.memo(({ days }: {
     days: Array<PlaceholderDay | ValidMonthDay>
 }) => {
     const { selectedDate } = useContext(CalendarContext) as CalendarState;
+    const dispatch = useContext(CalendarDispatchContext)!;
+
+    const handleClick = (shorthand: string) =>
+        (_e: React.MouseEvent) => dispatch(selectDate(shorthand));
 
     return (
         <tr>
             {days.map(day => {
+                let displayedDay;
                 if (day.type === "placeholder") {
-                    return (
-                        <td className={styles.table__cell} key={day.id}>
+                    displayedDay = (
+                        <td
+                            className={cn(
+                                styles.table__cell,
+                                styles["table__cell--empty"]
+                            )}
+                            key={day.id}>
                             <p className={styles.table__day}></p>
                         </td>
                     )
+                } else {
+                    displayedDay = (
+                        <td
+                            className={cn({
+                                [styles.table__cell]: true,
+                                [styles["table__cell--selected"]]:
+                                    day.shorthand === selectedDate.shorthand
+                            })}
+                            onClick={handleClick(day.shorthand)}
+                            key={day.id}>
+                            <p className={styles.table__day}>{day.number}</p>
+                        </td>
+                    )
                 }
-                return (
-                    <td
-                        className={cn({
-                            [styles.table__cell]: true,
-                            [styles["table__cell--selected"]]:
-                                day.shorthand === selectedDate.shorthand
-                        })}
-                        key={day.id}>
-                        <p className={styles.table__day}>{day.number}</p>
-                    </td>
-                )
+                return displayedDay;
             })}
         </tr>
     )
