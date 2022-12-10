@@ -50,9 +50,9 @@ CalendarTable.DaysRow = React.memo(({ days }: {
     )
 })
 
-
 CalendarTable.Body = () => {
-    const days = getMonthDays(11, 2022);
+    const { month, year } = useContext(CalendarContext) as CalendarState;
+    const days = getMonthDays(+month.numeric, +year);
 
     return (
         <tbody>
