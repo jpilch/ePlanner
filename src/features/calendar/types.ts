@@ -12,10 +12,15 @@ export interface ValidMonthDay extends BaseDay {
     shorthand: string;
 }
 
-type ActionType = "NEXT_MONTH" | "PREV_MONTH" | "RESET" | "SELECT_DATE";
+export enum ActionTypes {
+    NEXT_MONTH,
+    PREV_MONTH,
+    RESET,
+    SELECT_DATE
+}
 
 export interface Action {
-    type: ActionType,
+    type: ActionTypes,
     payload: string,
 }
 

@@ -1,14 +1,14 @@
 import { format } from "date-fns";
-import { Action, CalendarState } from "../types";
+import { Action, ActionTypes, CalendarState } from "../types";
 
 export default function calendarReducer(draft = initialState, action: Action) {
     switch (action.type) {
-        case "NEXT_MONTH":
-        case "PREV_MONTH":
-        case "SELECT_DATE":
+        case ActionTypes.NEXT_MONTH:
+        case ActionTypes.PREV_MONTH:
+        case ActionTypes.SELECT_DATE:
             draft.selectedDate.shorthand = action.payload;
             break;
-        case "RESET":
+        case ActionTypes.RESET:
             return draft;
         default:
             throw new Error("Unsupported action type");
