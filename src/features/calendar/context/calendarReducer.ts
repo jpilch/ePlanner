@@ -15,17 +15,20 @@ export default function calendarReducer(state = initialState, action: Action): C
 
 const today = new Date();
 export const initialState: CalendarState = {
-    dayOfTheWeek: {
-        numeric: format(today, "i"),
-        verbose: format(today, "EEEE"),
-    },
-    dayOfTheMonth: {
-        numeric: format(today, "d"),
-        verbose: format(today, "do"),
-    },
     month: {
         numeric: format(today, "M"),
         verbose: format(today, "MMMM"),
     },
     year: format(today, "yyyy"),
+    selectedDate: {
+        shorthand: format(today, "yyyy-MM-dd"),
+        dayOfTheWeek: {
+            numeric: format(today, "i"),
+            verbose: format(today, "EEEE"),
+        },
+        dayOfTheMonth: {
+            numeric: format(today, "d"),
+            verbose: format(today, "do"),
+        },
+    },
 };

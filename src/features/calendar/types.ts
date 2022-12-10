@@ -1,6 +1,15 @@
-export interface Day {
-    number?: number,
-    id: string,
+interface BaseDay {
+    id: string;
+}
+
+export interface PlaceholderDay extends BaseDay {
+    type: "placeholder";
+}
+
+export interface ValidMonthDay extends BaseDay {
+    type: "valid";
+    number: number;
+    shorthand: string;
 }
 
 type ActionType = "NEXT_MONTH" | "PREV_MONTH" | "RESET" | "SELECT_DATE";
@@ -10,14 +19,17 @@ export interface Action {
     payload: string,
 }
 
-interface StateValueTypes {
+interface NumericAndVerbose {
     numeric: string,
     verbose: string,
 }
 
 export interface CalendarState {
-    dayOfTheWeek: StateValueTypes,
-    dayOfTheMonth: StateValueTypes,
-    month: StateValueTypes,
+    month: NumericAndVerbose,
     year: string,
+    selectedDate: {
+        shorthand: string,
+        dayOfTheWeek: NumericAndVerbose,
+        dayOfTheMonth: NumericAndVerbose,
+    },
 }

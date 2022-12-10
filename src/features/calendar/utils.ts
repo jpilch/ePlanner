@@ -1,19 +1,28 @@
 import { v4 as uuidv4 } from "uuid";
-import { Day } from "./types";
+import { ValidMonthDay, PlaceholderDay } from "./types";
 
-export function getMonthDays() {
-    const nDays = 30;
-    const startsAt = 3;
+import { format, getDaysInMonth, startOfMonth } from "date-fns";
 
-    let days = Array(35).fill(null)
-        .map((_, i) => i)
+export function getMonthDays(month: number, year: number) {
+    const date = new Date(+year, +month);
+    const daysNumber = getDaysInMonth(date);
+    const firstDay = startOfMonth(date);
+    const firstDayIdx = +format(firstDay, "i");
+
+    return Array(35).fill(null)
+        .map((_, i) => i + 1)
         .reduce((acc, q) => {
-            const number = (q - startsAt) + 1;
-            if (q < startsAt || number > nDays) {
-                return acc.concat({ id: uuidv4() });
+            const number = q - firstDayIdx + 1;
+            const date = new Date(+year, +month, number)
+            const shorthand = format(date, "yyyy-MM-dd");
+            if (q < firstDayIdx || number > daysNumber) {
+                return acc.concat({ id: uuidv4(), type: "placeholder" });
             }
-            return acc.concat({ number, id: uuidv4() });
-        }, [] as Array<Day>);
-
-    return days;
+            return acc.concat({
+                type: "valid",
+                number,
+                shorthand,
+                id: uuidv4()
+            });
+        }, [] as Array<PlaceholderDay | ValidMonthDay>);
 }

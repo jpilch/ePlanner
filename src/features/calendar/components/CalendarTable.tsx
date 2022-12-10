@@ -3,7 +3,7 @@ import cn from "classnames";
 
 import styles from "./Calendar.module.scss";
 import { DAYS_OF_THE_WEEK } from "../constants";
-import { CalendarState, Day } from "../types";
+import { CalendarState, PlaceholderDay, ValidMonthDay } from "../types";
 import { getMonthDays } from "../utils";
 import { CalendarContext } from "../context/CalendarProvider";
 
@@ -19,32 +19,40 @@ CalendarTable.Head = React.memo(() => (
     </thead>
 ))
 
-CalendarTable.DaysRow = React.memo(({ days }: { days: Array<Day> }) => {
-    const { dayOfTheMonth } = useContext(CalendarContext) as CalendarState;
+CalendarTable.DaysRow = React.memo(({ days }: {
+    days: Array<PlaceholderDay | ValidMonthDay>
+}) => {
+    const { selectedDate } = useContext(CalendarContext) as CalendarState;
 
     return (
         <tr>
-            {days.map(day => (
-                <td
-                    className={cn({
-                        [styles.table__cell]: true,
-                        [styles["table__cell--selected"]]:
-                            day.number === +dayOfTheMonth.numeric
-                    })}
-                    key={day.id}>
-                    <p className={styles.table__day}>
-                        {day?.number ?? ""}
-                    </p>
-
-                </td>
-            ))}
+            {days.map(day => {
+                if (day.type === "placeholder") {
+                    return (
+                        <td className={styles.table__cell} key={day.id}>
+                            <p className={styles.table__day}></p>
+                        </td>
+                    )
+                }
+                return (
+                    <td
+                        className={cn({
+                            [styles.table__cell]: true,
+                            [styles["table__cell--selected"]]:
+                                day.shorthand === selectedDate.shorthand
+                        })}
+                        key={day.id}>
+                        <p className={styles.table__day}>{day.number}</p>
+                    </td>
+                )
+            })}
         </tr>
     )
 })
 
 
 CalendarTable.Body = () => {
-    const days = getMonthDays();
+    const days = getMonthDays(11, 2022);
 
     return (
         <tbody>
