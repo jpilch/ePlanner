@@ -45,6 +45,8 @@
 
         &:hover {
             cursor: pointer;
+            background-color: var(--color-highlight-primary-hover);
+            color: #fff;
         }
 
         &--selected {
@@ -56,6 +58,18 @@
         &--selected {
             &:hover {
                 cursor: default;
+            }
+        }
+
+        &--selected {
+            &:hover {
+                background-color: var(--color-highlight-primary);
+            }
+        }
+
+        &--empty {
+            &:hover {
+                background-color: var(--color-bg-primary);
             }
         }
     }
