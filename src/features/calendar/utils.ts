@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
-import { ValidMonthDay, PlaceholderDay } from "./types";
+import { ValidMonthDay, PlaceholderDay, SelectedDate } from "./types";
 
-import { format, getDaysInMonth, startOfMonth } from "date-fns";
+import { format, getDaysInMonth, parse, startOfMonth } from "date-fns";
 
 export function getMonthDays(month: number, year: number) {
     const zeroIndexedMonth = month - 1;
@@ -26,4 +26,24 @@ export function getMonthDays(month: number, year: number) {
                 id: uuidv4()
             });
         }, [] as Array<PlaceholderDay | ValidMonthDay>);
+}
+
+export function getSelectedDate(shorthand: string): SelectedDate {
+    const date = parse(shorthand, "yyyy-MM-dd", new Date());
+    return {
+        shorthand: format(date, "yyyy-MM-dd"),
+        dayOfTheWeek: {
+            numeric: format(date, "i"),
+            verbose: format(date, "EEEE"),
+        },
+        dayOfTheMonth: {
+            numeric: format(date, "d"),
+            verbose: format(date, "do"),
+        },
+        month: {
+            numeric: format(date, "M"),
+            verbose: format(date, "MMMM"),
+        },
+        year: format(date, "yyyy"),
+    }
 }

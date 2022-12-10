@@ -20,21 +20,25 @@ export enum ActionTypes {
 }
 
 export interface Action {
-    type: ActionTypes,
-    payload: string,
+    type: ActionTypes;
+    payload: string;
 }
 
 interface NumericAndVerbose {
-    numeric: string,
-    verbose: string,
+    numeric: string;
+    verbose: string;
+}
+
+export interface SelectedDate {
+    shorthand: string;
+    dayOfTheWeek: NumericAndVerbose;
+    dayOfTheMonth: NumericAndVerbose;
+    month: NumericAndVerbose;
+    year: string;
 }
 
 export interface CalendarState {
-    month: NumericAndVerbose,
-    year: string,
-    selectedDate: {
-        shorthand: string,
-        dayOfTheWeek: NumericAndVerbose,
-        dayOfTheMonth: NumericAndVerbose,
-    },
+    month: NumericAndVerbose;
+    year: string;
+    selectedDate: SelectedDate;
 }

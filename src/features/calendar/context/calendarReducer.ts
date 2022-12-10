@@ -1,12 +1,13 @@
 import { format } from "date-fns";
 import { Action, ActionTypes, CalendarState } from "../types";
+import { getSelectedDate } from "../utils";
 
 export default function calendarReducer(draft = initialState, action: Action) {
     switch (action.type) {
         case ActionTypes.NEXT_MONTH:
         case ActionTypes.PREV_MONTH:
         case ActionTypes.SELECT_DATE:
-            draft.selectedDate.shorthand = action.payload;
+            draft.selectedDate = getSelectedDate(action.payload);
             break;
         case ActionTypes.RESET:
             return draft;
@@ -22,15 +23,5 @@ export const initialState: CalendarState = {
         verbose: format(today, "MMMM"),
     },
     year: format(today, "yyyy"),
-    selectedDate: {
-        shorthand: format(today, "yyyy-MM-dd"),
-        dayOfTheWeek: {
-            numeric: format(today, "i"),
-            verbose: format(today, "EEEE"),
-        },
-        dayOfTheMonth: {
-            numeric: format(today, "d"),
-            verbose: format(today, "do"),
-        },
-    },
+    selectedDate: getSelectedDate(format(today, "yyyy-MM-dd")),
 };
