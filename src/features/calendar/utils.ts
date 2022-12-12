@@ -10,7 +10,7 @@ export function getMonthDays(month: number, year: number) {
     const firstDay = startOfMonth(date);
     const firstDayIdx = +format(firstDay, "i");
 
-    return Array(35).fill(null)
+    return Array(42).fill(null)
         .map((_, i) => i + 1)
         .reduce((acc, q) => {
             const number = q - firstDayIdx + 1;

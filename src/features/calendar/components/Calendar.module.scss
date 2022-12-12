@@ -21,6 +21,10 @@
 
     &__icon {
         @include flex-container;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
 
