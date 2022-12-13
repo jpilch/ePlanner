@@ -1,11 +1,11 @@
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import { MouseEventHandler, useContext } from 'react';
-import { CalendarContext, CalendarDispatchContext } from '../context/CalendarProvider';
+import { CalendarDispatchContext } from '../context/CalendarProvider';
 
 import styles from "./Calendar.module.scss";
-import { CalendarState } from '../types';
 import { selectNextMonth, selectPrevMonth } from '../context/actions';
+import useFormattedDates from '../useFormattedDates';
 
 CalendarNav.Icon = function ({ children, handleClick }: {
     children: JSX.Element,
@@ -19,7 +19,7 @@ CalendarNav.Icon = function ({ children, handleClick }: {
 }
 
 export default function CalendarNav() {
-    const { month, year } = useContext(CalendarContext) as CalendarState;
+    const { month, year } = useFormattedDates({ month: true });
     const dispatch = useContext(CalendarDispatchContext)!;
 
     return (

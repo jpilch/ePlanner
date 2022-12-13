@@ -8,7 +8,7 @@ export interface PlaceholderDay extends BaseDay {
 
 export interface ValidMonthDay extends BaseDay {
     type: "valid";
-    timestamp: number;
+    date: Date;
 }
 
 export enum ActionTypes {
@@ -21,6 +21,21 @@ export enum ActionTypes {
 export interface Action {
     type: ActionTypes;
     payload?: number;
+}
+
+interface NumericAndVerbose {
+    numeric: number;
+    verbose: string;
+}
+
+export interface FormattedMonth {
+    year: number;
+    month: NumericAndVerbose;
+}
+
+export interface FormattedDate extends FormattedMonth {
+    dayOfTheWeek: NumericAndVerbose;
+    dayOfTheMonth: NumericAndVerbose;
 }
 
 /**
