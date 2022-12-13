@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import { ValidMonthDay, PlaceholderDay } from "./types";
 
-import { format, getDaysInMonth, parse, startOfMonth } from "date-fns";
+import { format, getDaysInMonth, startOfMonth } from "date-fns";
 
 export function getMonthDays(month: number, year: number) {
     const zeroIndexedMonth = month - 1;
@@ -20,7 +20,7 @@ export function getMonthDays(month: number, year: number) {
             }
             return acc.concat({
                 type: "valid",
-                timestamp: date.getTime(),
+                date: date,
                 id: uuidv4()
             });
         }, [] as Array<PlaceholderDay | ValidMonthDay>);

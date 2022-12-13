@@ -5,6 +5,7 @@ import styles from "./Events.module.scss";
 import { CalendarState } from '../calendar/types';
 import { CalendarContext } from '../calendar/context/CalendarProvider';
 import { useContext } from 'react';
+import useFormattedDates from '../calendar/useFormattedDates';
 
 Events.List = function ({ empty }: { empty: boolean }) {
 
@@ -25,14 +26,14 @@ Events.List = function ({ empty }: { empty: boolean }) {
 }
 
 export default function Events() {
-    const { selectedDate } = useContext(CalendarContext) as CalendarState;
+    const { dayOfTheMonth, dayOfTheWeek, month } = useFormattedDates({ date: true });
 
     return (
         <section className={styles.events}>
             <div className={styles.events__date}>
                 <p>
-                    {selectedDate.dayOfTheWeek.verbose},{" "}
-                    {selectedDate.month.verbose} {selectedDate.dayOfTheMonth.verbose}
+                    {dayOfTheWeek.verbose},{" "}
+                    {month.verbose} {dayOfTheMonth.verbose}
                 </p>
             </div>
             <Events.List empty={true} />

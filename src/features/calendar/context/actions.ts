@@ -1,9 +1,9 @@
 import { Action, ActionTypes } from "../types";
 
-export function selectDate(shorthand: string): Action {
+export function selectDate(timestamp: number): Action {
     return {
         type: ActionTypes.SELECT_DATE,
-        payload: shorthand,
+        payload: timestamp,
     }
 }
 

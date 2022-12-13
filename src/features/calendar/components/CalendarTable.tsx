@@ -3,10 +3,11 @@ import cn from "classnames";
 
 import styles from "./Calendar.module.scss";
 import { DAYS_OF_THE_WEEK } from "../constants";
-import { CalendarState, PlaceholderDay, ValidMonthDay } from "../types";
+import { CalendarState, FormattedDate, PlaceholderDay, ValidMonthDay } from "../types";
 import { getMonthDays } from "../utils";
 import { CalendarContext, CalendarDispatchContext } from "../context/CalendarProvider";
 import { selectDate } from "../context/actions";
+import useFormattedDates from "../useFormattedDates";
 
 CalendarTable.Head = React.memo(() => (
     <thead>
@@ -23,11 +24,17 @@ CalendarTable.Head = React.memo(() => (
 CalendarTable.DaysRow = React.memo(({ days }: {
     days: Array<PlaceholderDay | ValidMonthDay>
 }) => {
-    const { selectedDate } = useContext(CalendarContext) as CalendarState;
+    const { dayOfTheMonth, year, month, } = useFormattedDates({ date: true });
     const dispatch = useContext(CalendarDispatchContext)!;
 
-    const handleClick = (shorthand: string) =>
-        (_e: React.MouseEvent) => dispatch(selectDate(shorthand));
+    const handleClick = (timestamp: number) =>
+        (_e: React.MouseEvent) => dispatch(selectDate(timestamp));
+
+    const isSelected = (date: Date) => (
+        date.getMonth() + 1 === month.numeric
+        && date.getFullYear() === year
+        && date.getDate() === dayOfTheMonth.numeric
+    );
 
     return (
         <tr>
@@ -50,11 +57,11 @@ CalendarTable.DaysRow = React.memo(({ days }: {
                             className={cn({
                                 [styles.table__cell]: true,
                                 [styles["table__cell--selected"]]:
-                                    day.shorthand === selectedDate.shorthand
+                                    isSelected(day.date)
                             })}
-                            onClick={handleClick(day.shorthand)}
+                            onClick={handleClick(day.date.getTime())}
                             key={day.id}>
-                            <p className={styles.table__day}>{day.number}</p>
+                            <p className={styles.table__day}>{day.date.getDate()}</p>
                         </td>
                     )
                 }
@@ -65,7 +72,7 @@ CalendarTable.DaysRow = React.memo(({ days }: {
 })
 
 CalendarTable.Body = () => {
-    const { month, year } = useContext(CalendarContext) as CalendarState;
+    const { month, year } = useFormattedDates({ month: true });
     const days = getMonthDays(+month.numeric, +year);
 
     return (
