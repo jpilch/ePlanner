@@ -8,8 +8,7 @@ export interface PlaceholderDay extends BaseDay {
 
 export interface ValidMonthDay extends BaseDay {
     type: "valid";
-    number: number;
-    shorthand: string;
+    timestamp: number;
 }
 
 export enum ActionTypes {
@@ -21,24 +20,14 @@ export enum ActionTypes {
 
 export interface Action {
     type: ActionTypes;
-    payload?: string;
+    payload?: number;
 }
 
-interface NumericAndVerbose {
-    numeric: string;
-    verbose: string;
-}
-
-export interface SelectedDate {
-    shorthand: string;
-    dayOfTheWeek: NumericAndVerbose;
-    dayOfTheMonth: NumericAndVerbose;
-    month: NumericAndVerbose;
-    year: string;
-}
-
+/**
+ * month - timestamp of currently selected month
+ * date - timestamp of currently selected date
+ */
 export interface CalendarState {
-    month: NumericAndVerbose;
-    year: string;
-    selectedDate: SelectedDate;
+    month: number;
+    date: number;
 }
