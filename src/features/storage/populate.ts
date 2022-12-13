@@ -13,6 +13,12 @@ const mockEvents: CalendarEvent[] = [
         startTimestamp: 1671084000000,
         endTimestamp: 1671105600000,
     },
+    {
+        title: "Example event #3",
+        desc: "This is an example event",
+        startTimestamp: 1670911200000,
+        endTimestamp: 1670958000000,
+    }
 ];
 
 export async function populate() {

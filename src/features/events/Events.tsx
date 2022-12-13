@@ -3,8 +3,28 @@ import cn from 'classnames';
 
 import styles from "./Events.module.scss";
 import useFormattedDates from '../calendar/useFormattedDates';
+import { useContext, useEffect, useMemo, useState } from 'react';
+import { CalendarContext } from '../calendar/context/CalendarProvider';
+import db, { CalendarEvent } from '../storage/db';
+import { populate } from '../storage/populate';
 
 Events.List = function ({ empty }: { empty: boolean }) {
+    const calendarContext = useContext(CalendarContext)!;
+
+    const [events, setEvents] = useState<CalendarEvent[]>();
+
+    useEffect(() => {
+        const findSavedEvents = async () => {
+            db.events
+                .where("startTimestamp")
+                .belowOrEqual(calendarContext.date)
+                .and(e => e.endTimestamp >= calendarContext.date)
+                .toArray().then(foundEvents => setEvents(foundEvents));
+        }
+        findSavedEvents();
+    }, []);
+
+    console.log(events)
 
     return (
         <div className={cn({
@@ -34,7 +54,11 @@ export default function Events() {
                 </p>
             </div>
             <Events.List empty={true} />
-            <button className={styles.list__button}>Add</button>
+            <button
+                className={styles.list__button}
+                onClick={() => populate()}>
+                Add
+            </button>
         </section >
     )
 }
