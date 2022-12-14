@@ -20,13 +20,14 @@
 
 .list {
     overflow-y: scroll;
-    flex: 1;
+    height: 16rem;
 
     &__button {
+        @include flex-container;
         font-weight: 1.5em;
         font-weight: bold;
-        padding: 1em;
-        border: var(--color-highlight-primary);
+        padding: 0.5em 1em;
+        border: none;
         background-color: var(--color-highlight-primary);
         color: #fff;
     }
@@ -48,5 +49,83 @@
 
     &__instruction {
         font-size: 0.85em;
+    }
+}
+
+.event {
+    padding: 0.7em;
+    font-size: 0.7rem;
+    display: grid;
+    grid-template-areas:
+        "title  pref-from   date-from   edit"
+        "desc   pref-to     date-to     delete";
+    grid-template-columns: 4.5fr 0.5fr 3fr 2fr;
+    grid-template-rows: repeat(2, 1fr);
+    border-bottom: var(--border-light);
+    gap: 0.5em;
+    height: 4rem;
+
+    &__title {
+        align-self: center;
+        justify-self: left;
+        font-size: 1.5em;
+        grid-area: title;
+    }
+
+    &__desc {
+        align-self: center;
+        justify-self: left;
+        grid-area: desc;
+    }
+}
+
+.pref {
+    align-self: center;
+    justify-self: right;
+    font-style: italic;
+
+    &--from {
+        grid-area: pref-from;
+    }
+
+    &--to {
+        grid-area: pref-to;
+    }
+}
+
+.date {
+    align-self: center;
+    justify-self: start;
+    font-weight: bold;
+
+    &--from {
+        grid-area: date-from;
+    }
+
+    &--to {
+        grid-area: date-to;
+    }
+}
+
+.button {
+    align-self: stretch;
+    justify-self: stretch;
+    font-size: 0.9em;
+    border: var(--border-light);
+    font-weight: bold;
+    border-radius: 0.2em;
+    @include flex-container;
+    justify-content: flex-start;
+    gap: 0.5em;
+    padding-left: 20%;
+
+    &--edit {
+        background-color: var(--color-bg-seondary);
+    }
+
+    &--delete {
+        background-color: var(--color-highlight-primary);
+        color: #fff;
+        border: none;
     }
 }

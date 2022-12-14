@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import { ValidMonthDay, PlaceholderDay } from "./types";
 
-import { format, getDaysInMonth, startOfMonth } from "date-fns";
+import { format, getDaysInMonth, startOfMonth, subMilliseconds } from "date-fns";
 
 export function getMonthDays(month: number, year: number) {
     const zeroIndexedMonth = month - 1;
@@ -14,7 +14,7 @@ export function getMonthDays(month: number, year: number) {
         .map((_, i) => i + 1)
         .reduce((acc, q) => {
             const curr = q - firstDayIdx + 1;
-            const date = new Date(+year, +zeroIndexedMonth, curr)
+            const date = new Date(+year, +zeroIndexedMonth, curr + 1);
             if (q < firstDayIdx || curr > totalDays) {
                 return acc.concat({ id: uuidv4(), type: "placeholder" });
             }

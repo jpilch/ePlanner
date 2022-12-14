@@ -9,7 +9,7 @@
         "heading"
         "calendar"
         "events";
-    grid-template-rows: .5fr 5fr 4.5fr;
+    grid-template-rows: .5fr 5fr auto;
     gap: 2em;
 
     padding: 2em 32em 5em 32em;

@@ -6,9 +6,7 @@ import App from "./app/App";
 import CalendarProvider from './features/calendar/context/CalendarProvider';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-    <React.StrictMode>
-        <CalendarProvider>
-            <App />
-        </CalendarProvider>
-    </React.StrictMode>
+    <CalendarProvider>
+        <App />
+    </CalendarProvider>
 )
