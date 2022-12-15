@@ -5,7 +5,7 @@ import styles from "./Calendar.module.scss";
 import { DAYS_OF_THE_WEEK } from "../constants";
 import { PlaceholderDay, ValidMonthDay } from "../types";
 import { getMonthDays } from "../utils";
-import { CalendarDispatchContext } from "../context/CalendarProvider";
+import { CalendarDispatchContext } from "../context/CalendarContext";
 import { selectDate } from "../context/actions";
 import useFormattedDates from "../useFormattedDates";
 

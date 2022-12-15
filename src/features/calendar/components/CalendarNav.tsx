@@ -1,7 +1,7 @@
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import { MouseEventHandler, useContext } from 'react';
-import { CalendarDispatchContext } from '../context/CalendarProvider';
+import { CalendarDispatchContext } from '../context/CalendarContext';
 
 import styles from "./Calendar.module.scss";
 import { selectNextMonth, selectPrevMonth } from '../context/actions';

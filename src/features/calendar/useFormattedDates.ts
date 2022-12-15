@@ -1,7 +1,7 @@
 import { format } from "date-fns"
 
 import { useContext } from "react"
-import { CalendarContext } from "./context/CalendarProvider"
+import { CalendarContext } from "./context/CalendarContext"
 import { FormattedDate, FormattedMonth } from "./types"
 
 type FormattedDates = FormattedMonth & FormattedDate;

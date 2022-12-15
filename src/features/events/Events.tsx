@@ -4,34 +4,13 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 import styles from "./Events.module.scss";
 import useFormattedDates from '../calendar/useFormattedDates';
-import React, { useContext, useEffect, useCallback, useState } from 'react';
-import { CalendarContext } from '../calendar/context/CalendarProvider';
-import db, { CalendarEvent } from '../storage/db';
+import React, { useContext } from 'react';
 import { populate } from '../storage/populate';
-import { endOfDay, startOfDay, format } from 'date-fns';
 import EventsEvent from './EventsEvent';
+import { EventsContext } from './context/CurrentDateEventsContext';
 
 Events.List = function () {
-    const { date } = useContext(CalendarContext)!;
-
-    const [events, setEvents] = useState<CalendarEvent[] | null>(null);
-
-    const findSavedEvents = useCallback(async () => {
-        const start = startOfDay(date).getTime();
-        const end = endOfDay(date).getTime();
-        const foundEvents = (await db.events
-            .where("startTimestamp").between(start, end, true, true,)
-            .or("endTimestamp").between(start, end, true, true,)
-            .toArray()).concat((await db.events
-                .where("startTimestamp").below(start)
-                .and(e => e.endTimestamp > end)
-                .toArray()));
-        setEvents(foundEvents);
-    }, [date])
-
-    useEffect(() => {
-        findSavedEvents();
-    }, [findSavedEvents]);
+    const events = useContext(EventsContext)!;
 
     const isEmpty = events == null || events.length === 0;
     const displayedEvents = isEmpty
