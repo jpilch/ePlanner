@@ -3,6 +3,7 @@ import { format } from "date-fns";
 
 import ClearIcon from '@mui/icons-material/Clear';
 import CreateIcon from '@mui/icons-material/Create';
+import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 
 import styles from "./Events.module.scss";
 import { CalendarEvent } from "../storage/db";
@@ -54,8 +55,8 @@ export default function EventsEvent({ event }: { event: CalendarEvent }) {
                 styles.button,
                 styles["button--delete"]
             )}>
-                <ClearIcon sx={{ fontSize: 15 }} />
-                delete
+                <UnfoldMoreIcon sx={{ fontSize: 15 }} />
+                details
             </button>
         </div>
     )
